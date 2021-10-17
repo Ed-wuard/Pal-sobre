@@ -1,0 +1,109 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <!-- CSS  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{% static 'lib/Skeleton-2.0.4/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/Skeleton-2.0.4/css/skeleton.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style_calendar.css' %}">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{% static 'lib/Skeleton-2.0.4/images/favicon.png' %}">
+  <!--jQuery-->
+  <script src = "{% static 'lib/jquery/jquery.js'%} "></script>
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="twelve-half columns" style="margin-top: 25%">
+        <form method="POST" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <input type="hidden" name="accion" value="{{ accion }}">
+
+                {% if form.errors %}
+                    <div class="u-full-width" style="width: 70px; height: 70px; background-color: red;">
+                        <button type="button" class="close">x</button>
+                        <h5> Ha Ocurrido un Error al Intentar Guardar!</h5>
+                        <ul>
+                            {% for elemento in form %}
+                                {% for error in elemento.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %} 
+                <div class="container">
+
+                    <div class="row">
+                        <label for="exampleEmailInput">Fecha:</label>
+                        {{ form.visible_fields.0|add_class:'u-full-width' }}
+
+                        <label for="exampleEmailInput">Monto:</label>
+                        {{ form.visible_fields.1|add_class:'u-full-width' }}
+
+                        <label for="exampleEmailInput">Descripción:</label>
+                        {{ form.visible_fields.2|add_class:'u-full-width' }}
+                    </div>
+
+                <a class="button btnTest" href="{% url 'register:expense_list'%}">Cancelar</a>
+                <input class="button-primary" type="submit" value="Guardar">
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>       
+
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+        //var parametros = $(this).serializeArray();
+        var parametros = new FormData(this);
+        $.ajax({
+            url: window.location.pathname,
+            type: 'POST',
+            data: parametros,
+            dataType: 'Json',
+            processData: false,
+            contentType: false,
+            }).done(function(data){
+                if(!data.hasOwnProperty('error')) {
+                
+                    location.href = '{{ list_url }}';
+                    return false;
+                }
+                mensaje_error(data.error);
+            }).fail(function(jqXHR, textStatus, errorThrown){
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function(data){
+                console.log(parametros)
+            });
+    });
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

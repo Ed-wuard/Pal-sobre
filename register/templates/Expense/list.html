@@ -1,0 +1,80 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{% static 'css/style_calendar.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/Skeleton-2.0.4/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/Skeleton-2.0.4/css/skeleton.css' %}">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{% static 'lib/Skeleton-2.0.4/images/favicon.png' %}">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="twelve-half columns" style="margin-top: 25%">
+        <table class="u-full-width">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Gasto</th>
+                <th>Descripción</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            {% for elemento in object_list %}
+                <tbody>
+                    <tr>
+                        <td>{{ elemento.id }}</td>
+                        <td>{{ elemento.date }}</td>
+                        <td>{{ elemento.amount }}</td>
+                        <td>{{ elemento.description }}</td>
+                        <td>
+                            <a href="{% url 'register:expense_update' elemento.id %}" id="btn-edit">
+                                <i class="fas fa-edit" ></i>
+                            </a>
+                            <a href="{% url 'register:expense_delete' elemento.id %}" id="btn-delete">
+                                <i class="fas fa-trash-alt" ></i>
+                            </a>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            {% endfor %}
+
+          </table>
+      </div>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

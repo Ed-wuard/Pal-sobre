@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendario Mejorado</title>
+	<link rel="stylesheet" href="{% static 'css/style_calendar.css' %}">
+	<script src="{% static 'lib/jquery/jquery-3.6.0.js'%}"></script>
+</head>
+<body>
+	<h1 class="title" id="title"></h1>
+	<ul>
+		<li>
+			<div class="container">
+                <a class="bnt-create" href="{% url 'register:expense_create'%}">+</a>
+				<h1>Meta</h1>
+				<div class="box">
+					<h3 id="meta-days"></h3>
+				</div>
+				<h2>Dias de no Gastos</h2>
+			</div>
+		</li>
+		<li>
+			<div class="calendar">
+
+				<div class="calendar-week">
+					<div class="calendar-day calendar-item">Lun</div>
+					<div class="calendar-day calendar-item">Mar</div>
+					<div class="calendar-day calendar-item">Mie</div>
+					<div class="calendar-day calendar-item">Jue</div>
+					<div class="calendar-day calendar-item">Vie</div>
+					<div class="calendar-day calendar-item">Sab</div>
+					<div class="calendar-day calendar-item">Dom</div>
+				</div>
+
+				<div class="calendar-dates" id="dates"></div>
+			</div>
+		</li>
+	</ul>
+
+<script src="{% static 'js/life.js'%}"></script>
+</body>
+</html>
