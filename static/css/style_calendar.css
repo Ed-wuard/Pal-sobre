@@ -47,20 +47,26 @@ ul {
 }
 
 .calendar-week {
+	text-align: center;
 	margin-bottom: 6px;
 	background-color: #e56b6f;
 	color: #fff;
 	margin-right: 3pt;
+	height: 34px;
+    padding: 6px;
 }
 
 .calendar-week,.calendar-dates {
-	display: grid;
-	grid-template-columns: repeat(7,1fr);
-	grid-row-gap: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-row-gap: 5px;
+    width: 623px;
+
 }
 
 .calendar-item-day {
-    height: 60pt;
+    height: 53pt;
 }
 
 .calendar-item {
@@ -78,11 +84,11 @@ ul {
 }
 
 .days {
-    background-color: #fff;
-    margin-right: 3pt;
+	background-color: #fff;
+    margin-right: 1pt;
     font-size: 9pt;
-    padding-left: 2pt;
-    padding-top: 2pt;
+    padding-left: 1pt;
+    padding-top: 1pt;
 }
 
 .days:hover {
@@ -106,15 +112,3 @@ ul {
     text-decoration: none;
     display: block;
 }
-
-#fecha {
-    height: 38px;
-    padding: 6px 10px;
-    background-color: #fff;
-    border: 1px solid #D1D1D1;
-    border-radius: 4px;
-    box-shadow: none;
-    box-sizing: border-box;
-}
-
-

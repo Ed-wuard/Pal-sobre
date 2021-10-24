@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendario Table</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_calendar.css'%}">
+	<script src="{% static 'lib/jquery/jquery-3.6.0.js'%}"></script>
+</head>
+<body>
+	<h1 class="title" id="title"></h1>
+	<ul>
+		<li>
+			<div class="container">
+                <a class="bnt-create" href="{% url 'register:expense_create'%}">+</a>
+				<h1>Meta</h1>
+				<div class="box">
+					<h3 id="meta-days"></h3>
+				</div>
+				<h2>Dias de no Gastos</h2>
+			</div>
+		</li>
+		<li>
+			<div class="calendar">
+	            {% for elemento in object_list %}
+					<input class="d-hidday" type="hidden" value="{{ elemento.date }}">
+	            {% endfor %}
+
+				<table id="tableID">
+				    <thead >
+						<tr class="calendar-week">
+						    <th scope="col">Lun</th>
+						    <th scope="col">Mar</th>
+						    <th scope="col">Mie</th>
+						    <th scope="col">Jue</th>
+						    <th scope="col">Vie</th>
+						    <th scope="col">Sab</th>
+						    <th scope="col">Dom</th>
+						</tr>
+				    </thead>
+				    <tbody id="dates">
+
+				    </tbody>
+
+				</table>
+			</div>
+		</li>
+	</ul>
+
+<script src="{% static 'js/life.js'%}"></script>
+</body>
+</html>

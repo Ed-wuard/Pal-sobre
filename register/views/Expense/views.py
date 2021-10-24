@@ -11,7 +11,7 @@ from register.forms import Expenseform
 
 class ExpenseListView(ListView):
     model = Expense
-    template_name = 'Expense/list.html'
+    template_name = 'Expense/calendaryTable.html'
 
     @method_decorator(csrf_exempt)
     #@method_decorator(login_required)

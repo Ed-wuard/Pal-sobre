@@ -20,24 +20,103 @@ writeMonth(monthNumber);
 
 
 function writeMonth(month) {
+	const dateDays = [];
+	var e = 0;
+
 	for (var i = startDay(); i >= 1; i--) {
-		dates.innerHTML += `<div class="calendar-date calendar-item-day days ">
-		</div>`;
+
+		dateDays[e] = `<div class="calendar-date calendar-item-day days bg-days "></div>`;
+
+		e++;
+	}
+
+	var f = dateDays.length;
+	var dateInput = document.querySelectorAll('.d-hidday');
+
+	//var prueba2= new Date(prueba);
+	//alert(prueba2.getDate());
+	for (var i = dateInput.length - 1; i >= 0; i--) {
+		var dateInputOne= new Date(dateInput[i].value);
+		var dayInputOne= dateInputOne.getDate();
 	}
 
 	for (var i = 1; i <= getTotalDays(month); i++) {
-
 		if (month === fixedCurrentDate.getMonth()) {
 			if (i === currentDay) {
-				dates.innerHTML += `<div class="calendar-date calendar-item-day today days">${i}</div>`;
+				for (var i = dateInput.length - 1; i >= 0; i--) {
+					var dateInputOne= new Date(dateInput[i].value);
+					var dayInputOne= dateInputOne.getDate();
+					
+					if (i === Math.abs(dayInputOne)) {
+						alert('gjgj');
+						dateDays[f] = `<div class="calendar-date calendar-item-day yes days">${i}</div>`;
+					}else {
+						dateDays[f] = `<div class="calendar-date calendar-item-day days bg-days today">${i}</div>`;
+					}
+				}
+
 			}else {
-				dates.innerHTML += `<div class="calendar-date calendar-item-day days">${i}</div>`;
+				if (i === dateInput) {
+					dateDays[f] = `<div class="calendar-date calendar-item-day days yes">${i}</div>`;
+				}else {
+					dateDays[f] = `<div class="calendar-date calendar-item-day days bg-days">${i}</div>`;
+				}
 			}
-		} else {
-			dates.innerHTML += `<div class="calendar-date calendar-item days">${i}</div>`;
+		}else {
+			dateDays[f] = `<div class="calendar-date calendar-item days bg-days">${i}</div>`;
 		}
 
+		f++;
 	}
+
+
+	
+	dates.innerHTML += `<tr class="calendar-dates">
+							<td>${dateDays[0]}</td>
+							<td>${dateDays[1]}</td>
+							<td>${dateDays[2]}</td>
+							<td>${dateDays[3]}</td>
+							<td>${dateDays[4]}</td>
+							<td>${dateDays[5]}</td>
+							<td>${dateDays[6]}</td>
+			        	</tr>
+						<tr class="calendar-dates">
+							<td>${dateDays[7]}</td>
+							<td>${dateDays[8]}</td>
+							<td>${dateDays[9]}</td>
+							<td>${dateDays[10]}</td>
+							<td>${dateDays[11]}</td>
+							<td>${dateDays[12]}</td>
+							<td>${dateDays[13]}</td>
+			        	</tr>
+						<tr class="calendar-dates">
+							<td>${dateDays[14]}</td>
+							<td>${dateDays[15]}</td>
+							<td>${dateDays[16]}</td>
+							<td>${dateDays[17]}</td>
+							<td>${dateDays[18]}</td>
+							<td>${dateDays[19]}</td>
+							<td>${dateDays[20]}</td>
+			        	</tr>
+						<tr class="calendar-dates">
+							<td>${dateDays[21]}</td>
+							<td>${dateDays[22]}</td>
+							<td>${dateDays[23]}</td>
+							<td>${dateDays[24]}</td>
+							<td>${dateDays[25]}</td>
+							<td>${dateDays[26]}</td>
+							<td>${dateDays[27]}</td>
+			        	</tr>
+						<tr class="calendar-dates">
+							<td>${dateDays[28]}</td>
+							<td>${dateDays[29]}</td>
+							<td>${dateDays[30]}</td>
+							<td>${dateDays[31]}</td>
+							<td>${dateDays[32]}</td>
+							<td>${dateDays[33]}</td>
+							<td>${dateDays[34]}</td>
+			        	</tr>`;
+
 }
 
 function getTotalDays(month) {
