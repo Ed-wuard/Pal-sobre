@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-
+from django.forms.models import model_to_dict
 
 
 class Expense(models.Model):
@@ -10,12 +10,12 @@ class Expense(models.Model):
     
 
     def __str__(self):
-        return str(self.date)
+        return str(self.date.strftime('%d-%m-%y'))
 
     def toJSON(self):
         item = model_to_dict(self)
 
-        if self.last_login:
+        if self.date:
             item['date'] = self.date.strftime('%d-%m-%y')
 
         return item

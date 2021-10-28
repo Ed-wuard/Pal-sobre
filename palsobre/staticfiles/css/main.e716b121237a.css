@@ -1,0 +1,19 @@
+#btn-edit i {
+    margin-left: 5px;
+}
+
+#btn-delete i {
+    margin-left: 5px;
+}
+
+#btn-delete,#btn-edit {
+    text-decoration: none;
+}
+
+#modal-alert h5 {
+    color: red;
+}
+
+#modal-alert {
+    margin-bottom: 10px;
+}

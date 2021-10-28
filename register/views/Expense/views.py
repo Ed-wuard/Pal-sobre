@@ -1,3 +1,4 @@
+import json
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -18,12 +19,28 @@ class ExpenseListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+        data = []
+        try:
+            for i in range(1, len(Expense.objects.all())+1):
+                data.append(Expense.objects.get(pk=i).toJSON())
+            
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        data = []
+        
+        for i in range(1, len(Expense.objects.all())+1):
+            data.append(Expense.objects.get(pk=i).toJSON())
+            
+        #data = json.dumps(data)
         context['title'] = 'Lista de Gastos'
         context['create_url'] = reverse_lazy('register:expense_create')
         context['list_url'] = reverse_lazy('register:expense_list')
-        context['entidad'] = 'Expense'
+        context['list_expense'] = data
         return context
 
 class ExpenseCreateView(CreateView):

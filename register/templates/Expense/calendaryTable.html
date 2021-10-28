@@ -40,12 +40,20 @@
 				    <tbody id="dates">
 
 				    </tbody>
-
 				</table>
 			</div>
 		</li>
 	</ul>
 
 <script src="{% static 'js/life.js'%}"></script>
+<script>
+	var currentDate = new Date();
+	var monthNumber = currentDate.getMonth();
+	var lista = `{{list_expense|safe}}`;
+	alert(lista);
+	
+	writeMonth(monthNumber, lista);
+	
+</script>
 </body>
 </html>

@@ -1,0 +1,115 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #8ecae6;
+	font-family: sans-serif;
+}
+ul {
+	text-decoration: none;
+	list-style: none;
+	display: flex;
+}
+.container {
+    display: block;
+    width: 300px;
+    text-align: center;
+    height: 500px;
+    color: #3d5a80;
+}
+
+.box {
+    width: 150px;
+    height: 80px;
+    background-color: #fff;
+    margin-left: 60pt;
+    border-radius: 5pt;
+    text-align: center;
+    padding: 5pt;
+    margin-bottom: 35pt;
+}
+
+.box h3 {
+	color: black;
+}
+
+.title {
+	color: #3d5a80;
+	font-size: 50pt;
+	margin-left: 20pt;
+	margin-bottom: 1pt;
+}
+
+.calendar {
+    width: 630px;
+    border-radius: 5pt;
+}
+
+.calendar-week {
+	text-align: center;
+	margin-bottom: 6px;
+	background-color: #e56b6f;
+	color: #fff;
+	margin-right: 3pt;
+	height: 34px;
+    padding: 6px;
+}
+
+.calendar-week,.calendar-dates {
+
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-row-gap: 5px;
+    width: 623px;
+
+}
+
+.calendar-item-day {
+    height: 53pt;
+}
+
+.calendar-item {
+	text-align: center;
+	line-height: 4;
+}
+
+
+.today {
+	color: red;
+}
+.yes {
+	background: #64ed9b;
+	color:#fff;
+}
+.old {
+	color: rgba(189, 193, 198, 1);
+}
+.bg-days {background-color: #fff;}
+.days {
+    margin-right: 1pt;
+    font-size: 9pt;
+    padding: 32px;
+}
+
+.days:hover {
+	background-color: #caf0f8;
+}
+
+.create {
+	color: #4cc9f0;
+	font-size: 1.3em;
+}
+
+.bnt-create{
+	width: 90px;
+    height: 50px;
+    border-radius: 9px;
+    padding: 15px;
+    background-color: #3d5a80;
+    color: #fff;
+    margin-left: 101px;
+    margin-bottom: 60px;
+    text-decoration: none;
+    display: block;
+}
