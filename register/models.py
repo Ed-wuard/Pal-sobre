@@ -5,7 +5,7 @@ from django.forms.models import model_to_dict
 
 class Expense(models.Model):
     date = models.DateField(verbose_name='Fecha')
-    amount = models.DecimalField(decimal_places=2, max_digits=3, default=0.0, verbose_name='Monto')
+    amount = models.DecimalField(decimal_places=2, max_digits=7, default=0.0, verbose_name='Monto')
     description  = models.TextField(verbose_name='Descripcion')
     
 

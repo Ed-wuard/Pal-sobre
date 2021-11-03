@@ -16,7 +16,10 @@ title.textContent = monthNames[monthNumber] + '  ' + currentYear.toString();
 meta.textContent = getTotalDays(monthNumber).toString() + '/16';
 
 
-function writeMonth(month, listJson) {
+writeMonth(monthNumber);
+
+
+function writeMonth(month) {
 	const dateDays = [];
 	var e = 0;
 
@@ -29,23 +32,11 @@ function writeMonth(month, listJson) {
 
 	var f = dateDays.length;
 	var dateInput = document.querySelectorAll('.d-hidday');
-
+	
 	for (var i = 1; i <= getTotalDays(month); i++) {
-		
-		for (var a = 0; a <= dateInput.length - 1; a++) { // con esto recorro la fechas de mis registro
-			var dateInputOne = new Date(dateInput[a].value); // creo un obj tipo Date para sacar el dia
-			var dayInputOne= dateInputOne.getDate();// este sera el dia de la fecha de mi registro
-			// i es el dia que se va a escribir en el calendario 
-			if (i === Math.abs(dayInputOne)) { // comparo el dia del registro con el que se va a escribir en el calendario				
-				dateDays[f] = `<div class="calendar-date calendar-item-day days bg-days">${i}<div class="yes"></div></div>`;
-				console.log('Este '+i+' es Igual a Este -> '+dayInputOne+ ' F '+f+ ' DIV ->'+ dateDays[f]);
-			}else {
-				dateDays[f] = `<div class="calendar-date calendar-item-day days bg-days">${i}<div class="no"></div></div>`;
-			}
-		}
+		dateDays[f] = `<div class="calendar-date calendar-item-day days bg-days">${i}</div>`;	
 		f++;
 	}
-
 	
 	dates.innerHTML += `<tr class="calendar-dates">
 							<td>${dateDays[0]}</td>
@@ -86,13 +77,13 @@ function writeMonth(month, listJson) {
 						<tr class="calendar-dates">
 							<td>${dateDays[28]}</td>
 							<td>${dateDays[29]}</td>
-							<td>${dateDays[30]}</td>
-							<td>${dateDays[31]}</td>
-							<td>${dateDays[32]}</td>
-							<td>${dateDays[33]}</td>
-							<td>${dateDays[34]}</td>
 			        	</tr>`;
 
+var rows = document.getElementById("tableID").rows;
+for(var i = 0, ceiling = rows.length; i <= ceiling; i++) {
+	var cont = rows[1].cells[i].innerHTML;
+	console.log(cont.textContent);
+}
 }
 
 function getTotalDays(month) {

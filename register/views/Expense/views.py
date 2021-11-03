@@ -12,7 +12,7 @@ from register.forms import Expenseform
 
 class ExpenseListView(ListView):
     model = Expense
-    template_name = 'Expense/calendaryTable.html'
+    template_name = 'Expense/calendaryUL.html'
 
     @method_decorator(csrf_exempt)
     #@method_decorator(login_required)

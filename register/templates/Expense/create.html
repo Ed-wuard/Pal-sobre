@@ -43,19 +43,11 @@
                 <input type="hidden" name="accion" value="{{ accion }}">
 
                 {% if form.errors %}
-                    <div class="u-full-width" style="width: 70px; height: 70px; background-color: red;">
-                        <button type="button" class="close">x</button>
-                        <h5> Ha Ocurrido un Error al Intentar Guardar!</h5>
-                        <ul>
-                            {% for elemento in form %}
-                                {% for error in elemento.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %} 
+                    <h5 style="font-size: 1.1rem;"> Ha Ocurrido un Error al Intentar Iniciar Tu Sesión!</h5>
+                    {{ form.errors }}
+                {% endif %}
                 <div class="container">
+                    <span id="error" style="color: brown;"></span>
 
                     <div class="row">
                         <label for="exampleEmailInput">Fecha:</label>
@@ -77,7 +69,14 @@
     </div>
   </div>
   <script>       
-
+    function mensaje_error(error){
+        var msj = document.getElementById('error');
+        if(error.name == 'Product con esta Nombre ya existe.'){
+            error.name = '!El Producto que Intentas Registrar ya Esta Registrado¡'
+            msj.textContent = error.name;
+        }
+        msj.textContent = error.name;
+    } 
     $('form').on('submit', function (e) {
         e.preventDefault();
         //var parametros = $(this).serializeArray();

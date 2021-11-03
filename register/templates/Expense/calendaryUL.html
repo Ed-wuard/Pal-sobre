@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendario Con UL</title> 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_calendarUl.css'%}">
+	<script src="{% static 'lib/jquery/jquery-3.6.0.js' %}"></script>
+
+</head>
+	<body>
+		<h1 class="title" id="title"></h1>
+		<ul id="ul">
+			<li>
+				<div class="container">
+					<a class="bnt-create" href="{% url 'register:expense_create'%}">+</a>
+					<h1>Meta</h1>
+					<div class="box">
+						<h3 id="meta-days"></h3>
+					</div>
+					<h2>Dias de no Gastos</h2>
+				</div>
+			</li>
+			<li>
+				<div class="calendar">
+					{% for elemento in object_list %}
+						<input class="d-hidday" type="hidden" value='{{elemento.date}}'>
+					{% endfor %}
+					
+					<ul id="dates">
+						<li class="day-name">Lun</li>
+						<li class="day-name">Mar</li>
+						<li class="day-name">Mie</li>
+						<li class="day-name">Jue</li>
+						<li class="day-name">Vie</li>
+						<li class="day-name">Sab</li>
+						<li class="day-name" style="margin-right: 2pt;">Dom</li>
+		
+					</ul>
+				</div>
+			</li>
+
+		<script src="{% static 'js/life2.js'%}"></script>
+	</body> 
+</html>

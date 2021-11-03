@@ -4,7 +4,7 @@
 <head>
 	<title>Calendario Table</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style_calendar.css'%}">
-	<script src="{% static 'lib/jquery/jquery-3.6.0.js'%}"></script>
+	<script src="{% static 'lib/jquery/jquery-3.6.0.js' %}"></script>
 </head>
 <body>
 	<h1 class="title" id="title"></h1>
@@ -22,7 +22,7 @@
 		<li>
 			<div class="calendar">
 	            {% for elemento in object_list %}
-					<input class="d-hidday" type="hidden" value="{{ elemento.date }}">
+					<input class="d-hidday" type="hidden" value='{{elemento.date}}'>
 	            {% endfor %}
 
 				<table id="tableID">
@@ -40,20 +40,12 @@
 				    <tbody id="dates">
 
 				    </tbody>
+
 				</table>
 			</div>
 		</li>
 	</ul>
 
 <script src="{% static 'js/life.js'%}"></script>
-<script>
-	var currentDate = new Date();
-	var monthNumber = currentDate.getMonth();
-	var lista = `{{list_expense|safe}}`;
-	alert(lista);
-	
-	writeMonth(monthNumber, lista);
-	
-</script>
 </body>
 </html>
