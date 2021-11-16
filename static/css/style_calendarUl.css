@@ -24,7 +24,7 @@ body {
     margin-left: 60pt;
     border-radius: 5pt;
     text-align: center;
-    padding: 5pt;
+    padding-top: 10px;
     margin-bottom: 35pt;
 }
 
@@ -100,7 +100,12 @@ li {
     border-radius: 6px;
 	background: #f55252;
 }
-
+.money {
+	text-align: center;
+    margin-top: 17px;
+    color: #f55252;
+    font-weight: bold;
+}
 .no {
 	height: 10px;
     width: 10px;

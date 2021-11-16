@@ -1,4 +1,3 @@
-import json
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -8,6 +7,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 from register.forms import Expenseform
+import json
 
 
 class ExpenseListView(ListView):
@@ -36,7 +36,7 @@ class ExpenseListView(ListView):
         for i in range(1, len(Expense.objects.all())+1):
             data.append(Expense.objects.get(pk=i).toJSON())
             
-        #data = json.dumps(data)
+        # data = json.loads(data)
         context['title'] = 'Lista de Gastos'
         context['create_url'] = reverse_lazy('register:expense_create')
         context['list_url'] = reverse_lazy('register:expense_list')

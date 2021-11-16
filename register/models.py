@@ -16,7 +16,7 @@ class Expense(models.Model):
         item = model_to_dict(self)
 
         if self.date:
-            item['date'] = self.date.strftime('%d-%m-%y')
+            item['date'] = self.date.strftime('%m-%d-%y')
 
         return item
 
