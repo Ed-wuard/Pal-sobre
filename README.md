@@ -2,6 +2,8 @@
 
 Calendario de control de gastos.
 
+![Screenshot](pal-sobre.png)
+
 ## Instalación (install)
 
 ### Paso 1. Crear entorno virtual
